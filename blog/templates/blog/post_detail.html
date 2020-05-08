@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div>
+      <div class="uk-card uk-card-default">
+          <div class="uk-card-media-top">
+              <img style="width:100%" src="{{ post.thumbnail.url }}" alt="{{ post.name }}">
+          </div>
+          <div class="uk-card-body">
+              <h1 class="uk-card-title"><b>{{ post.title }}</b></h1>
+              <p>{{ post.content|safe }}</p>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

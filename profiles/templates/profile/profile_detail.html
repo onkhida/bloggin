@@ -1,0 +1,47 @@
+{% extends 'profile/base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div style="width: 100%;" class="uk-card uk-card-default uk-width-1-2@m">
+      <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-auto">
+                  <img class="uk-border-circle" width="40" height="40" src="{{ user_profile.profile_pic.url }}">
+              </div>
+              <div class="uk-width-expand">
+                  <h3 class="uk-card-title uk-margin-remove-bottom">{{ user_profile.user.username }}'s Profile</h3>
+                  <!-- <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p> -->
+              </div>
+          </div>
+      </div>
+      <div class="uk-card-body">
+          <p>{{ user_profile.bio }}</p>
+      </div>
+      <div class="uk-card-footer">
+          <a href="#" class="uk-button uk-button-text">CONTACT ME</a>
+      </div>
+  </div><br><br><br>
+
+  <div id="postswrapper">
+    {% for post in posts %}
+    <div class="uk-card uk-card-hover uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img src="{{ post.thumbnail.url }}" alt="" uk-cover>
+            <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">{{ post.title }}</h3>
+                <p>{{ post.content|truncatewords:50|safe }}</p>
+                <button class="uk-button uk-button-primary"><a href="{{ post.get_absolute_url }}">READ MORE</a></button>
+                <br>
+                <small>By {{ post.author }} on {{ post.publish }}</small>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

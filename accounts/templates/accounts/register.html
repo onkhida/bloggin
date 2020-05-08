@@ -1,0 +1,19 @@
+{% extends "accounts/base.html" %}
+  {% block title %} |Log-in{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <form action="." method="post">
+    <h3>Register Here</h3>
+    {{ form.username }}<br><br>
+    {{ form.email }}<br><br>
+    {{ form.password1 }}<br><br>
+    {{ form.password2 }}<br><br>
+    {% csrf_token %}
+    <input class="uk-button uk-button-primary" type="submit" value="REGISTER">
+  </form>
+
+</div>
+
+{% endblock %}

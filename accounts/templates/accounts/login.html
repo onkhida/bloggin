@@ -1,0 +1,20 @@
+{% extends "accounts/base.html" %}
+  {% block title %} |Log-in{% endblock %}
+
+{% block content %}
+<div class="container">
+  {% if user.is_authenticated %}
+  <h3>You are already logged in</h3>
+  {% else %}
+  <form action="." method="post">
+    <h3>Login</h3>
+    {{ form.username }}<br><br>
+    {{ form.password }}<br><br>
+    {% csrf_token %}
+    <input class="uk-button uk-button-primary" type="submit" value="LOGIN">
+  </form>
+  <small>You can create an account <a href="{% url 'register' %}">here</a></small>
+  {% endif %}
+</div>
+
+{% endblock %}

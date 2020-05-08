@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+
+    <form action="." method="post" enctype="multipart/form-data">
+        <fieldset class="uk-fieldset">
+
+            <legend style="overflow: hidden;" class="uk-legend">Post: </legend>
+
+            <div class="uk-margin">
+                {{ form.title }}
+            </div>
+
+            <div class="uk-margin">
+              {{ form.thumbnail }}
+            </div>
+
+            <div class="uk-margin">
+              {{ form.content }}
+            </div>
+
+
+        </fieldset>
+        {% csrf_token %}
+        <input type="submit" class="uk-button uk-button-primary" value="SUBMIT">
+    </form>
+
+  </div>
+{% endblock %}

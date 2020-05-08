@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridges{% block title %}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'semantic/semantic.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-4.0.0/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style-1.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.4.3/dist/css/uikit.min.css" />
+</head>
+<body>
+    <!--The Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="{% url 'post_list' %}">
+            <img id="site-logo" src="{% static 'img/logo.png' %}" alt="Bridges">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto right-items justify-content-center">
+
+      {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'post_create' %}"><span uk-icon="plus-circle"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' user.username %}"><span uk-icon="user"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}"><span uk-icon="sign-out"></span></a>
+            </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="#"><span uk-icon="search"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}"><span uk-icon="sign-in"></span></a>
+      </li>
+      {% endif %}
+          </ul>
+        </div>
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.3/dist/js/uikit-icons.min.js"></script>
+    <script src="bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
